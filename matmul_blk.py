@@ -44,3 +44,9 @@ if __name__ == '__main__':
         time_matmul_end = time.perf_counter()
         time_matmul = time_matmul_end-time_matmul_start
         time_diff = np.append(time_diff, time_blk-time_matmul) # time difference 
+ # analyse the blocksize n and the calculation time 
+fig, ax = plt.subplots()
+
+ax.plot(range(1,N+1), time_diff, linewidth=2.0)
+
+plt.show()
