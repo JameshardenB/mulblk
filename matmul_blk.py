@@ -1,6 +1,5 @@
 import numpy as np
-
-# N square size of Matrix, n blockSize, C=AB
+import time
 
 def matmul_blk(A, B, N, n):
     C = np.zeros((N,N))
@@ -15,25 +14,33 @@ def matmul_blk(A, B, N, n):
     return C
 
 if __name__ == '__main__':
-
-    # N size of Matrix, n blocksize
     
-    N = 100
-    n = 3
-
+    ## let user set up N and blocksize n
+    N = 30
+    time_diff = np.array([])  # time difference between matmul_blk and np.matmul
     a = np.random.random((N,N))
     b = np.random.random((N,N))
-
-    time_start = time.perf_counter()
-    c = matmul_blk(a,b,N,n)
-    time_end = time.perf_counter()
-    print(time_end-time_start)
-    print(c)
-    print()
-    
-    # the built in method np.matmul
-    time_start = time.perf_counter()
-    c_nai = np.matmul(a,b)
-    time_end = time.perf_counter()
-    print(time_end-time_start)
-    print(c_nai)
+    # define time_blk and time_matmul
+    time_blk = np.array(N)
+    # print(time_blk)
+    time_matmul = np.array(N) 
+    # print(len(time_matmul))
+    for n in range (1, N+1):
+        # print(n,end =',')
+        # follow the running time for matmul_blk
+        time_start = time.perf_counter()
+        # print(time_start)
+        c = matmul_blk(a,b,N,n)
+        time_end = time.perf_counter()
+        # print(time_end)
+        # print(time_blk[])
+        time_blk = time_end-time_start
+        
+        #print(c)
+        # #print()
+        # follow the running time for np.matmul
+        time_matmul_start = time.perf_counter()
+        c_nai = np.matmul(a,b)
+        time_matmul_end = time.perf_counter()
+        time_matmul = time_matmul_end-time_matmul_start
+        time_diff = np.append(time_diff, time_blk-time_matmul) # time difference 
