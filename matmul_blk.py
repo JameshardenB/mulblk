@@ -16,12 +16,24 @@ def matmul_blk(A, B, N, n):
 
 if __name__ == '__main__':
 
-    a = np.random.random((9,9))
-    b = np.random.random((9,9))
+    # N size of Matrix, n blocksize
+    
+    N = 100
+    n = 3
 
-    c = matmul_blk(a,b,9,3)
+    a = np.random.random((N,N))
+    b = np.random.random((N,N))
+
+    time_start = time.perf_counter()
+    c = matmul_blk(a,b,N,n)
+    time_end = time.perf_counter()
+    print(time_end-time_start)
     print(c)
     print()
     
-    c_naive = np.matmul(a,b)
-    print(c_naive)
+    # the built in method np.matmul
+    time_start = time.perf_counter()
+    c_nai = np.matmul(a,b)
+    time_end = time.perf_counter()
+    print(time_end-time_start)
+    print(c_nai)
