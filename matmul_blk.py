@@ -21,3 +21,7 @@ if __name__ == '__main__':
 
     c = matmul_blk(a,b,9,3)
     print(c)
+    print()
+    
+    c_nai = np.matmul(a,b)
+    print(c_nai)
