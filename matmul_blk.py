@@ -1,6 +1,6 @@
 import numpy as np
 
-
+# N square size of Matrix, n blockSize, C=AB
 
 def matmul_blk(A, B, N, n):
     C = np.zeros((N,N))
@@ -23,5 +23,5 @@ if __name__ == '__main__':
     print(c)
     print()
     
-    c_nai = np.matmul(a,b)
-    print(c_nai)
+    c_naive = np.matmul(a,b)
+    print(c_naive)
